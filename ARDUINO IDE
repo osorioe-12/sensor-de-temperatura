@@ -1,0 +1,62 @@
+<servo.h>
+const int analogIn = A0;
+const int servoPin = 9; // Pin al que está conectado el motor
+int temperatureLimit = 23; // Límite de temperatura inicial
+
+int RawValue = 0;
+double Voltage = 0;
+double tempC = 0;
+double tempF - 0;
+Servo Servo1;
+
+void setup() {
+  Serial.begin(9600);
+  Servo1.attach(servoPin);
+}
+void loop() {
+   if (Serial.available() > 0) {
+     // Si hay datos disponibles en el puerto serie
+    temperatureLimit = Serial.parseInt(); // Lee el límite de temperatura desde C#
+    RawValue = analogRead(analogIn);
+    Voltage = (Rawalue / 1023.0) * 5000; // 5000 para obtener milivoltios
+     tempC = Voltage * 0.1; // 500 es la compensación
+    tempF = (tempC * 1.8) + 32; // Convierte a Fahrenheit
+    Serial.println(tempC, 1);
+// Controla el motor en función del límite de temperatura
+   if (tempC > temperaturelimit) {
+// Make servo go to 0 degrees
+     Servol.write(0);
+     delay(1000);
+// Make servo go to 98 degrees
+     Servo1.write(90);
+     delay(1000).;
+// Make servo go to 180 degrees
+     Servo1.write(180);
+     delay(1000);
+    }else {
+     servo1.detach();
+    }
+     deley(500);
+}else{
+   Rawalue = analogRead(analogIn):
+   Voltage = (RawValue / 1023.0) * 5000; // 5000 para obtener milivoltios
+   tempC = Voltage *0.1; // 500 es la compensación
+   tempF= (tempC * 1.8) + 32; // Convierte a Fahrenheit
+   Serial.println(tempC, 1);
+// Controla el motor en función del límite de temperatura
+ if (tempC > temperaturelimit) (
+// Make servo go to 0 degrees
+   Servo1.write(0);
+   delay(1000);
+// Make servo go to 90 degrees
+   Servo1.write(90);
+   delay(1000);
+// Make servo go to 180 degrees
+  Servo1.vrite(180);
+  delay(1000);
+   } else {
+   Servo1.detach();
+   }
+   deley(500);
+}
+}
